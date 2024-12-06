@@ -58,17 +58,7 @@ depends on core.js for utility functions like removeChildren or quickElement
             var todayYear = today.getFullYear();
             var todayClass = '';
 
-            // Use UTC functions here because the date field does not contain time
-            // and using the UTC function variants prevent the local time offset
-            // from altering the date, specifically the day field.  For example:
-            //
-            // ```
-            // var x = new Date('2013-10-02');
-            // var day = x.getDate();
-            // ```
-            //
-            // The day variable above will be 1 instead of 2 in, say, US Pacific time
-            // zone.
+            
             var isSelectedMonth = false;
             if (typeof selected !== 'undefined') {
                 isSelectedMonth = (selected.getUTCFullYear() === year && (selected.getUTCMonth() + 1) === month);
@@ -146,11 +136,6 @@ depends on core.js for utility functions like removeChildren or quickElement
 
     // Calendar -- A calendar instance
     function Calendar(div_id, callback, selected) {
-        // div_id (string) is the ID of the element in which the calendar will
-        //     be displayed
-        // callback (string) is the name of a JavaScript function that will be
-        //     called with the parameters (year, month, day) when a day in the
-        //     calendar is clicked
         this.div_id = div_id;
         this.callback = callback;
         this.today = new Date();
